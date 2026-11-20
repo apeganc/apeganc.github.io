@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anka Peganc – Personal Projects &amp; Web Development</title>
+  <meta name="description" content="Hi, I’m Anka Peganc from Slovenia. These are the little IT projects I’ve been working on in 2026.">
+  <link rel="canonical" href="https://anka.crunchyapple.si/">
+
+  <!-- Tab and home-screen icons -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Link preview on LinkedIn, Facebook, WhatsApp, Viber… -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anka.crunchyapple.si/">
+  <meta property="og:title" content="Anka Peganc – Personal Projects &amp; Web Development">
+  <meta property="og:description" content="Hi, I’m Anka Peganc from Slovenia. These are the little IT projects I’ve been working on in 2026.">
+  <meta property="og:image" content="https://anka.crunchyapple.si/images/share-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Small web projects &amp; useful things. anka.crunchyapple.si">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/recursive-casual-600.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* Fonts are self-hosted, so no visitor data goes to Google (licences in fonts/LICENSE.txt) */
+    /* Source Serif 4 for all text. One variable file per alphabet covers every weight;
+       the latin-ext file adds Slovenian letters (č, š, ž) and is only loaded when needed. */
+    @font-face {
+      font-family: "Source Serif 4";
+      font-style: normal;
+      font-weight: 200 900;
+      font-display: swap;
+      src: url(fonts/source-serif-4-latin-ext-opsz-normal.woff2) format("woff2");
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+    @font-face {
+      font-family: "Source Serif 4";
+      font-style: normal;
+      font-weight: 200 900;
+      font-display: swap;
+      src: url(fonts/source-serif-4-latin-opsz-normal.woff2) format("woff2");
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+    /* Recursive Casual, only for the greeting at the top (semibold, fully casual) */
+    @font-face {
+      font-family: "Recursive Casual";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url(fonts/recursive-casual-600.woff2) format("woff2");
+    }
+
+    :root {
+      /* Oceanic Cactus */
+      --teal: #22525b;
+      --turquoise: #5ccbc3;
+      --mint: #f7fff7;
+      --coral: #ed5e5a; /* the palette's #f9736f, a touch darker so it reads on mint (3.2:1, enough for large text) */
+      --yellow: #fae775;
+      --heading: var(--coral);
+      --dark-turquoise: #17827a; /* the palette's turquoise, darkened just enough to read as link text (4.6:1 on mint) */
+
+      --paper: var(--mint);
+      --print: #ffffff;
+      --ink: #2b2b2b;    /* text in soft dark grey; teal stays for links and the footer */
+      --muted: #666666;  /* quieter grey for notes, dates and the tech lines */
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      font-size: 106.25%; /* 17px */
+      -webkit-text-size-adjust: 100%;
+    }
+    /* Links to parts of the page glide there, unless the visitor prefers less motion */
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+    [id] { scroll-margin-top: 1.5rem; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-size: 1.06rem; /* body text 18px; headings and layout stay as they are */
+      line-height: 1.65;
+    }
+
+    main {
+      flex: 1 0 auto;
+      width: 100%;
+      max-width: 39.5rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 0;
+    }
+
+    ::selection { background: var(--yellow); color: var(--teal); }
+
+    /* Text */
+    h1, h2, h3 { line-height: 1.2; margin: 0; font-weight: 600; }
+    b { font-weight: 600; }
+    h1 {
+      font-family: "Recursive Casual", "Segoe UI", system-ui, sans-serif;
+      font-size: 2.25rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--heading);
+    }
+    h2 { font-size: 1.45rem; margin-top: 3.25rem; }
+    h3 { font-size: 1.12rem; }
+    p, ul, figure { margin: 0.75rem 0 0; }
+    ul { padding-left: 1.2rem; }
+    li + li { margin-top: 0.35rem; }
+
+    .note { color: var(--muted); font-weight: 400; }
+    .new { color: var(--coral); }
+
+    a {
+      color: var(--dark-turquoise);
+      font-weight: 600;
+      text-decoration-line: none;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--turquoise);
+      text-underline-offset: 0.22em;
+    }
+    a:hover { text-decoration-line: underline; text-decoration-color: var(--coral); }
+    a:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Intro */
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 12.5rem;
+      grid-template-areas:
+        "name  name"
+        "text  photo";
+      gap: 0 2rem;
+      align-items: center;
+    }
+    .intro h1 { grid-area: name; margin-bottom: 1.25rem; }
+    .intro-text { grid-area: text; }
+    .intro-text p:first-child { margin-top: 0; }
+    .print {
+      background: var(--print);
+      padding: 0.45rem;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(34, 82, 91, 0.10), 0 4px 14px rgba(34, 82, 91, 0.10);
+    }
+    .print img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+    .intro .print {
+      grid-area: photo;
+      margin: 0;
+      transform: rotate(1.2deg);
+    }
+    /* The photos keep fixed proportions (4:5 and 4:3, same as their width and height),
+       so the page doesn't jump while they load. A photo with other proportions is
+       trimmed to fit rather than squeezed. */
+    .intro .print img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% 30%;
+    }
+    .gustavo img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    /* Projects: plain sections on the page, with a thin line between them */
+    .project { margin-top: 1.5rem; }
+    .project + .project,
+    .project + .planning {
+      margin-top: 2.25rem;
+      padding-top: 2.25rem;
+      border-top: 1px solid rgba(34, 82, 91, 0.15);
+    }
+
+    /* What each project is built with, one quiet line under the title */
+    .stack {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Projects still in planning */
+    .planning { color: var(--muted); }
+    .planning h3 { font-size: 1rem; }
+    .planning ul {
+      margin-top: 0.4rem;
+      padding: 0;
+      list-style: none;
+    }
+    .planning b { color: var(--ink); }
+
+    /* Small headings inside a section ("Formal education", "Self-study…") */
+    .subheading { margin-top: 1.75rem; }
+    h2 + .subheading { margin-top: 1rem; } /* less space right under the section title */
+
+    /* Gustavo */
+    .gustavo {
+      width: min(100%, 21rem);
+      margin: 1.75rem auto 0;
+      padding-bottom: 0.2rem;
+      transform: rotate(-1.5deg);
+    }
+    .gustavo figcaption {
+      margin: 0.5rem 0.2rem 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2.5rem 1.25rem 3rem;
+      background: var(--teal);
+      color: var(--mint);
+      font-size: 1.15rem;
+    }
+    footer p {
+      max-width: 37rem;
+      margin: 0 auto;
+    }
+    /* Social icons: black icon files in icons/, shown white on the teal band */
+    footer .social {
+      display: flex;
+      gap: 0.9rem;
+      max-width: 37rem;
+      margin: 1.1rem auto 0;
+      padding: 0;
+      list-style: none;
+    }
+    footer .social li + li { margin-top: 0; }
+    footer .social li:first-child a { margin-left: -0.3rem; } /* icon lines up with the text */
+    footer .social a {
+      display: block;
+      padding: 0.3rem;
+      border-radius: 6px;
+    }
+    footer .social img {
+      display: block;
+      width: 1.6rem;
+      height: 1.6rem;
+      object-fit: contain;
+      filter: invert(1);
+    }
+    footer .social a:hover img { opacity: 0.75; }
+    footer .copyright {
+      margin-top: 1.75rem;
+      font-size: 0.85rem;
+      color: #c9dcd6;
+    }
+    footer a {
+      color: var(--yellow);
+      text-decoration-color: var(--yellow);
+    }
+    footer a:hover { text-decoration-color: var(--coral); }
+    footer a:focus-visible { outline-color: var(--yellow); }
+
+    /* Index on the left. Only on wide screens, where there's room beside the text;
+       it stays in place while the page scrolls. */
+    .index { display: none; }
+    .index ul { margin: 0; padding: 0; list-style: none; }
+    .index li + li { margin-top: 0.3rem; }
+    .index ul ul { margin-top: 0.3rem; padding-left: 0.8rem; }
+    .index a {
+      display: block; /* so the script can measure each link for the coral segment */
+      color: #444444;
+      font-weight: 400;
+      text-decoration-line: none;
+    }
+    .index a:hover { color: var(--ink); text-decoration-line: underline; }
+    .index a[aria-current] { color: var(--ink); } /* the part you're reading */
+
+    /* A faint rail down the left of the index, with a coral segment beside the part
+       you're reading. The script at the end sets --marker-top and --marker-height. */
+    .index > ul {
+      position: relative;
+      padding-left: 0.9rem;
+      border-left: 2px solid rgba(34, 82, 91, 0.15);
+    }
+    .index > ul::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -2px; /* right on top of the rail */
+      width: 2px;
+      height: var(--marker-height, 0);
+      transform: translateY(var(--marker-top, 0));
+      border-radius: 1px;
+      background: var(--coral);
+      opacity: 0; /* hidden until there's a part to mark, e.g. at the top of the page */
+    }
+    .index > ul:has(a[aria-current])::before { opacity: 1; }
+    /* The segment slides from link to link, unless the visitor prefers less motion */
+    @media (prefers-reduced-motion: no-preference) {
+      .index > ul::before { transition: transform 0.3s ease, height 0.3s ease, opacity 0.3s; }
+    }
+
+    /* 73rem here is 1168px (media queries count 1rem as 16px) */
+    @media (min-width: 73rem) {
+      .index {
+        display: block;
+        position: fixed;
+        top: 3.9rem;
+        left: calc(50% - 32.75rem); /* 12rem wide, ending 2.25rem left of the text; the rail takes the extra 1rem */
+        width: 12rem;
+        font-size: 0.88rem;
+        line-height: 1.35;
+      }
+    }
+
+    /* Up arrow, bottom right. The script at the end hides it near the top of the page. */
+    .to-top {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      display: grid;
+      place-items: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid rgba(34, 82, 91, 0.25);
+      border-radius: 50%;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 1.25rem;
+      line-height: 1;
+      text-decoration-line: none;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+    .to-top:hover { color: var(--coral); border-color: var(--coral); }
+    .to-top:focus-visible { border-radius: 50%; }
+    /* visibility as well, so the hidden arrow can't be reached with the Tab key */
+    .to-top.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    @media (max-width: 34rem) {
+      main { padding-top: 2rem; }
+      h1 { font-size: 2.1rem; }
+      .intro {
+        grid-template-columns: 1fr;
+        grid-template-areas: "photo" "name" "text";
+      }
+      .intro .print {
+        width: 10.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="index" aria-label="On this page">
+    <ul>
+      <li><a href="#projects">What I’ve been making</a>
+        <ul>
+          <li><a href="#yummy">Yummy</a></li>
+          <li><a href="#clinical-studies-tracker">Clinical Studies Tracker</a></li>
+          <li><a href="#amielo">Amielo</a></li>
+          <li><a href="#mnop">Law firm website</a></li>
+        </ul>
+      </li>
+      <li><a href="#background">How I got here</a></li>
+      <li><a href="#more">A few more things</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="intro" id="top">
+      <h1>Hi, I’m Anka!</h1>
+      <div class="intro-text">
+        <p>I’m from Celje, Slovenia. Just a curious, simple person who’s into adventures, food and animals.</p>
+        <p>After years in the pharmaceutical industry, I’m taking a year off to build projects of my own and enjoy everyday life.</p>
+        <p>This is where I share the things I’m creating, learning and experimenting with.</p>
+      </div>
+      <figure class="print"><img src="images/anka-peganc.jpeg" alt="Anka Peganc" width="800" height="1000" decoding="async"></figure>
+    </header>
+
+    <section id="projects">
+      <h2>What I’ve been making</h2>
+
+      <article class="project" id="yummy">
+        <h3>Yummy – Favorite Dish Notifier</h3>
+        <p class="stack">Python, FastAPI, PostgreSQL, HTMX, Docker</p>
+        <p>Yummy is a small project I built to learn more about web development and the tech stack I wanted to use.</p>
+        <p>It started as a simple web app with one job: let me know on the days my favorite dish is on the menu at General Hospital Celje. (Trust me, as hospital canteens go, it’s one of the best in Slovenia.) Since then, it has grown into a small platform that can watch different restaurants, five so far. If your lunch place isn’t on the list yet, you can <a href="mailto:anka@crunchy.si">write to me</a>, and if Yummy can read the menu, I’ll add it.</p>
+        <p>Try it at <a target="_blank" rel="noopener" href="https://yummy-notifier.crunchy.si/">yummy-notifier.crunchy.si</a>. More details in the <a target="_blank" rel="noopener" href="projects/yummy-notifier.html">README</a>.</p>
+      </article>
+
+      <article class="project" id="clinical-studies-tracker">
+        <h3>Clinical Studies Tracker <span class="note">(demo)</span></h3>
+        <p class="stack">Next.js, React, MongoDB, Better Auth, Vercel</p>
+        <p>A demo of a tracker for clinical studies: sites, status and CRA (Clinical Research Associate) assignments. Feel free to sign up and try it out. Everything resets to the sample data every night.</p>
+        <p>I made it for a problem I dealt with in my own work. Most clinical study systems are built by the sponsor, for the sponsor, so if you run studies for five sponsors, you end up with a portal for each one and a folder of spreadsheets holding it all together.</p>
+        <p>It’s built to give managers a clear overview: every study in one list, down to each recruiting site with its status and notes. Filter by sponsor, protocol or CRA to quickly see who is assigned to what, and keep everything up to date as study or site details change.</p>
+        <p>At work I also saw how overwhelmed people in healthcare sometimes are by all the systems they first have to learn, in clinical trials especially. This tracker is designed to be easy to use and based on actual needs in the Contract Research Organization (CRO) space.</p>
+        <p>The demo is at <a target="_blank" rel="noopener" href="https://app-clinical.crunchy.si/">app-clinical.crunchy.si</a>. More details in the <a target="_blank" rel="noopener" href="projects/clinical-studies-tracker.html">README</a>.</p>
+      </article>
+
+      <article class="project" id="amielo">
+        <h3>Amielo <span class="new">(new!)</span></h3>
+        <p class="stack">Next.js, TypeScript, PostgreSQL, Tailwind CSS, Stripe</p>
+        <p>Amielo is my favorite project – a cute web app for creating personalized digital gifts. The giver picks a template, like breakfast or movie night, tailors the menu, then adds a personal touch with a recorded voice message and animations. The recipient opens a private link, chooses what they’d like from the menu and receives a confirmation card with a calendar invite. After the event they can create a memory card to remember it by.</p>
+        <p>The digital part sets up the surprise and makes it feel personal, while the experience itself happens offline.</p>
+        <p>Opening soon at <a target="_blank" rel="noopener" href="https://amielo.app/">amielo.app</a>. When it does, buying a gift is the nicest way to support me :) More details in the <a target="_blank" rel="noopener" href="projects/amielo.html">README</a>.</p>
+      </article>
+
+      <article class="project" id="mnop">
+        <h3>Martinčič Novak Odvetniška pisarna</h3>
+        <p class="stack">HTML, CSS, GitHub Pages</p>
+        <p>I redesigned the website of a law firm from scratch. It’s a clean static site with no framework, and it loads fast. See it at <a target="_blank" rel="noopener" href="https://mnop.si/">mnop.si</a>.</p>
+      </article>
+
+      <section class="planning" aria-labelledby="planning-title">
+        <h3 id="planning-title">In planning</h3>
+        <ul>
+          <li><b>Only Steaks</b> – a website</li>
+          <li><b>Rooster, Paper, Scissors</b> – a game</li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="background">
+      <h2>How I got here</h2>
+      <h3 class="subheading">Formal education</h3>
+      <ul>
+        <li>Bachelor of Science in Psychology, Faculty of Arts, University of Ljubljana</li>
+        <li>Master of Pharmacy, Faculty of Pharmacy, University of Ljubljana</li>
+      </ul>
+
+      <h3 class="subheading">Self-study and online learning</h3>
+      <ul>
+        <li>The Modern Python 3 Bootcamp, Udemy (<a target="_blank" rel="noopener" href="certificates/Certificate_Python.pdf">certificate</a> | <a target="_blank" rel="noopener" href="https://www.udemy.com/course/the-modern-python3-bootcamp/">details</a>)</li>
+        <li>The Web Developer Bootcamp 2026, Udemy (<a target="_blank" rel="noopener" href="certificates/Certificate_Web_Developer.pdf">certificate</a> | <a target="_blank" rel="noopener" href="https://www.udemy.com/course/the-web-developer-bootcamp/">details</a>)</li>
+        <li>Programming with AI, SmartNinja (<a target="_blank" rel="noopener" href="certificates/Certificate_SmartNinja.pdf">certificate</a> | <a target="_blank" rel="noopener" href="https://smartninja.si/programiranje-z-ai/">details</a>)</li>
+        <li>The Git &amp; GitHub Bootcamp, Udemy (<a target="_blank" rel="noopener" href="certificates/Certificate_Git_GitHub.pdf">certificate</a> | <a target="_blank" rel="noopener" href="https://www.udemy.com/course/git-and-github-bootcamp/">details</a>)</li>
+      </ul>
+
+      <h3 class="subheading">Work</h3>
+      <p>My background is in pharma: I worked at Roche, Novartis and IQVIA, in sales, quality assurance and, most recently, clinical trials. At IQVIA I was a Clinical Research Associate: I monitored clinical trials of medicines at their study sites, made sure each one followed its protocol and Good Clinical Practice, and trained the site teams. In 2024, I was recognized for successfully guiding a study site through an inspection by JAZMP, the Slovenian medicines agency.</p>
+    </section>
+
+    <section id="more">
+      <h2>A few more things</h2>
+      <p>I like to learn new stuff all the time and love solving problems and puzzles (I’m also a Mensa member).</p>
+      <p>And I’m the owner of the best cat in the world: Gustavo, a fluffy and funny Siberian.</p>
+      <figure class="print gustavo">
+        <img src="images/gustavo.jpeg" alt="Gustavo, a fluffy Siberian cat" width="800" height="600" loading="lazy" decoding="async">
+        <figcaption>Gustavo, my (hard)working assistant</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>You can reach me at <a href="mailto:anka@crunchy.si">anka@crunchy.si</a>.</p>
+    <ul class="social">
+      <li><a href="https://www.linkedin.com/in/anka-peganc-8a545b34a/" target="_blank" rel="me noopener" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn"><img src="icons/linkedin.svg" alt="" width="27" height="27"></a></li>
+      <li><a href="https://github.com/apeganc" target="_blank" rel="me noopener" aria-label="GitHub (opens in a new tab)" title="GitHub"><img src="icons/github.svg" alt="" width="27" height="27"></a></li>
+      <li><a href="https://www.instagram.com/anka_peganc/" target="_blank" rel="me noopener" aria-label="Instagram (opens in a new tab)" title="Instagram"><img src="icons/instagram.svg" alt="" width="27" height="27"></a></li>
+      <li><a href="https://www.facebook.com/anka.peganc" target="_blank" rel="me noopener" aria-label="Facebook (opens in a new tab)" title="Facebook"><img src="icons/facebook.svg" alt="" width="27" height="27"></a></li>
+    </ul>
+    <p class="copyright">© 2026 Anka Peganc</p>
+  </footer>
+
+  <a class="to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+
+  <script>
+    const toTop = document.querySelector(".to-top");
+    const rail = document.querySelector(".index > ul");
+    const links = [...document.querySelectorAll(".index a")];
+    const targets = links.map((link) => document.getElementById(link.hash.slice(1)));
+    let marked = null; // the index link that's marked right now
+    let picked = null; // a link clicked in the index, kept marked while the page glides there
+
+    // Move the coral segment next to the marked link (it stays put while hidden)
+    const placeMarker = () => {
+      if (!marked) return;
+      rail.style.setProperty("--marker-top", marked.offsetTop + "px");
+      rail.style.setProperty("--marker-height", marked.offsetHeight + "px");
+    };
+
+    const mark = (link) => {
+      if (link === marked) return;
+      if (marked) marked.removeAttribute("aria-current");
+      if (link) link.setAttribute("aria-current", "true");
+      marked = link;
+      placeMarker();
+    };
+
+    // The part you're reading is the last one whose top has scrolled past a line
+    // a third of the way down the window. At the very bottom of the page it's Contact,
+    // because the footer can never scroll up that far.
+    const currentLink = () => {
+      const pageHeight = document.documentElement.scrollHeight;
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= pageHeight - 2) {
+        return links[links.length - 1];
+      }
+      const line = window.innerHeight / 3;
+      let current = null;
+      targets.forEach((target, i) => {
+        if (target.getBoundingClientRect().top <= line) current = links[i];
+      });
+      return current;
+    };
+
+    const update = () => {
+      const current = picked || currentLink();
+      toTop.classList.toggle("hidden", window.scrollY < 400); // hide the up arrow near the top
+      mark(current);
+    };
+
+    // A link clicked in the index stays marked, even if its section is too near the bottom
+    // to reach the top of the window. Scrolling of your own hands the marking back to the page.
+    for (const link of links) {
+      link.addEventListener("click", () => { picked = link; mark(link); });
+    }
+    for (const type of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+      window.addEventListener(type, () => { picked = null; }, { passive: true });
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    // Links can shift when the window is resized (or the index first appears on a wide screen)
+    // and when the fonts finish loading, so measure again then
+    window.addEventListener("resize", () => { update(); placeMarker(); });
+    document.fonts.ready.then(placeMarker);
+  </script>
+</body>
+</html>
