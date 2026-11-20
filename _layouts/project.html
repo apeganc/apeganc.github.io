@@ -11,7 +11,6 @@
   <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
 
   <link rel="preload" href="{{ '/fonts/lexend-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ '/fonts/agrave-pro-600.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <style>
     /* The page template for the project READMEs in projects/. Same fonts and colours as index.html. */
     @font-face {
@@ -41,12 +40,6 @@
       font-display: swap;
       src: url({{ '/fonts/lexend-latin-600-normal.woff2' | relative_url }}) format("woff2");
       unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-    }
-    @font-face {
-      font-family: "Agrave Pro";
-      font-weight: 600;
-      font-display: swap;
-      src: url({{ '/fonts/agrave-pro-600.woff2' | relative_url }}) format("woff2");
     }
 
     :root {
@@ -82,14 +75,13 @@
 
     ::selection { background: var(--yellow); color: var(--teal); }
 
-    .site, main {
+    main {
       width: 100%;
       max-width: 39.5rem;
       margin: 0 auto;
       padding: 0 1.25rem;
     }
-    .site { padding-top: 2.5rem; }
-    main { flex: 1 0 auto; }
+    main { flex: 1 0 auto; padding-top: 1.5rem; }
 
     a {
       color: var(--dark-turquoise);
@@ -103,15 +95,6 @@
       outline: 2px solid var(--teal);
       outline-offset: 2px;
       border-radius: 2px;
-    }
-
-    /* Your name at the top, linking back to the main page */
-    .home {
-      font-family: "Agrave Pro", "Lexend", sans-serif;
-      font-size: 2.1rem;
-      font-weight: 600;
-      line-height: 1.1;
-      color: var(--coral);
     }
 
     /* The README itself */
@@ -213,18 +196,13 @@
     }
 
     @media (max-width: 34rem) {
-      .site { padding-top: 1.75rem; }
-      .home { font-size: 1.85rem; }
+      main { padding-top: 0.75rem; }
       h1 { font-size: 1.7rem; }
       td:first-child { width: 7.5rem; }
     }
   </style>
 </head>
 <body>
-  <header class="site">
-    <a class="home" href="{{ '/' | relative_url }}">Anka Peganc</a>
-  </header>
-
   <main>
 {{ content }}
   </main>
